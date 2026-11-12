@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+}
+
+/* Minimal markdown rendering styles (used by <MarkdownPreview />). */
+.markdown {
+  @apply text-sm leading-relaxed text-slate-700;
+}
+.markdown h1 {
+  @apply mb-2 mt-4 text-xl font-bold text-slate-900;
+}
+.markdown h2 {
+  @apply mb-2 mt-4 text-lg font-semibold text-slate-900;
+}
+.markdown h3 {
+  @apply mb-1 mt-3 text-base font-semibold text-slate-900;
+}
+.markdown p {
+  @apply my-2;
+}
+.markdown ul {
+  @apply my-2 list-disc pl-5;
+}
+.markdown ol {
+  @apply my-2 list-decimal pl-5;
+}
+.markdown a {
+  @apply text-indigo-600 underline;
+}
+.markdown code {
+  @apply rounded bg-slate-100 px-1 py-0.5 font-mono text-[0.85em] text-slate-800;
+}
+.markdown pre {
+  @apply my-2 overflow-x-auto rounded-lg bg-slate-900 p-3 text-slate-100;
+}
+.markdown pre code {
+  @apply bg-transparent p-0 text-inherit;
+}
+.markdown blockquote {
+  @apply my-2 border-l-4 border-slate-200 pl-3 text-slate-500;
+}
+.markdown strong {
+  @apply font-semibold text-slate-900;
+}

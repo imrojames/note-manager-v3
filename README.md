@@ -97,7 +97,7 @@ npm test --workspace @note-manager/api
 
 - [x] **Phase 0** — Monorepo foundation, shared types, tooling, CI, Docker
 - [x] **Phase 1** — Express API: MongoDB models, auth, notes/note-types/tags, tests
-- [ ] **Phase 2** — React frontend: auth, notes CRUD, markdown, search, Break Calculator
+- [x] **Phase 2** — React frontend: auth, notes CRUD, markdown, search, Break Calculator
 - [ ] **Phase 3** — Full test suite, e2e, containerized stack
 - [ ] **Phase 4** — Standup digest, ticket-reference links, search upgrades
 

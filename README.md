@@ -58,10 +58,45 @@ npm run build --workspace @note-manager/shared
 | `npm run format`    | Format with Prettier                |
 | `npm test`          | Run every workspace's tests         |
 
+## API (Phase 1)
+
+Run it locally:
+
+```bash
+docker compose up -d mongodb
+cp .env.example .env
+npm run build --workspace @note-manager/shared
+npm run seed --workspace @note-manager/api   # demo@example.com / password123
+npm run dev  --workspace @note-manager/api   # http://localhost:4000
+```
+
+All note/note-type/tag routes require authentication (JWT in an httpOnly cookie) and are scoped to the
+signed-in user.
+
+| Method | Route                | Description                                        |
+| ------ | -------------------- | -------------------------------------------------- |
+| POST   | `/api/auth/register` | Create an account, sets the auth cookie            |
+| POST   | `/api/auth/login`    | Log in, sets the auth cookie                       |
+| POST   | `/api/auth/logout`   | Clear the auth cookie                              |
+| GET    | `/api/auth/me`       | Current user                                       |
+| GET    | `/api/notes`         | List notes (`?noteTypeId=` `?q=` `?tag=` `?date=`) |
+| POST   | `/api/notes`         | Create a note                                      |
+| GET    | `/api/notes/:id`     | Get a note                                         |
+| PATCH  | `/api/notes/:id`     | Update a note                                      |
+| DELETE | `/api/notes/:id`     | Delete a note                                      |
+| ...    | `/api/note-types`    | CRUD for note types (categories)                   |
+| ...    | `/api/tags`          | List / create / delete tags                        |
+
+Run the tests (no running database needed — uses an in-memory MongoDB):
+
+```bash
+npm test --workspace @note-manager/api
+```
+
 ## Roadmap
 
 - [x] **Phase 0** — Monorepo foundation, shared types, tooling, CI, Docker
-- [ ] **Phase 1** — Express API: MongoDB models, auth, notes/note-types/tags, tests
+- [x] **Phase 1** — Express API: MongoDB models, auth, notes/note-types/tags, tests
 - [ ] **Phase 2** — React frontend: auth, notes CRUD, markdown, search, Break Calculator
 - [ ] **Phase 3** — Full test suite, e2e, containerized stack
 - [ ] **Phase 4** — Standup digest, ticket-reference links, search upgrades

@@ -1,0 +1,18 @@
+# Local development stack.
+# Phase 0: MongoDB only. The api and web services are added in Phase 3
+# (multi-stage Dockerfiles) once those apps exist.
+services:
+  mongodb:
+    image: mongo:7
+    container_name: note-manager-mongo
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER:-root}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-example}
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

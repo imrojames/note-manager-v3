@@ -6,6 +6,7 @@
   "description": "Note Manager REST API — Express 5 + MongoDB (Mongoose) + JWT auth.",
   "scripts": {
     "dev": "tsx watch src/index.ts",
+    "dev:mem": "tsx src/dev-mem.ts",
     "start": "tsx src/index.ts",
     "build": "tsc --noEmit",
     "typecheck": "tsc --noEmit",

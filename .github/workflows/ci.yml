@@ -52,6 +52,12 @@ jobs:
       - name: Build shared package
         run: npm run build --workspace @note-manager/shared
 
+      - name: Cache in-memory MongoDB binary
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/mongodb-binaries
+          key: ${{ runner.os }}-mongodb-memory-server
+
       - name: Install Playwright browser (Chromium only)
         run: npx playwright install --with-deps chromium
         working-directory: apps/web

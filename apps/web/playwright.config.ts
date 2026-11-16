@@ -7,6 +7,9 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './e2e',
+  // Wait for the API (:4000) to be healthy before any test runs — the webServer
+  // below only gates on Vite (:5173), which comes up long before the API.
+  globalSetup: './e2e/global-setup.ts',
   timeout: 30_000,
   fullyParallel: false,
   workers: 1,
